@@ -6,7 +6,8 @@ export enum USER_ROLES {
 export const ROUTES = {
   HOME: '/',
   JOIN_VIDEO: '/join-video',
-  LOGIN: '/login',
   DASHBOARD: '/dashboard',
   JOIN_VIDEO_PRO: '/join-video-pro',
+  PLAYGROUND: '/playground',
+  LOGIN: '/login',
 };

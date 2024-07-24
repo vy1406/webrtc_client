@@ -60,5 +60,5 @@ const Container = styled.div`
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px #ccc;
-  margin-top: 50%;
+  margin-top: 30vh;
 `

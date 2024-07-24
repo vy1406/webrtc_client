@@ -9,6 +9,7 @@ import SnackBar from '@components/snackbar';
 import { ROUTES } from '@utils/constants';
 import MainLayout from '@components/layout/MainLayout';
 import AuthLayout from '@components/layout/AuthLayout';
+import Playground from 'pages/Playground';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes: React.FC = () => {
         <Route path={ROUTES.JOIN_VIDEO} element={<JoinVideo />} />
         <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
         <Route path={ROUTES.JOIN_VIDEO_PRO} element={<JoinVideoPro />} />
+        <Route path={ROUTES.PLAYGROUND} element={<Playground />} />
       </Route>
       <Route element={<AuthLayout />}>
         <Route path={ROUTES.LOGIN} element={<Login />} />
