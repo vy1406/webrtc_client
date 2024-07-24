@@ -12,6 +12,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@context/*": ["context/*"],
+      "@interfaces/*": ["interfaces/*"],
     }
   },
   "include": ["src"]
