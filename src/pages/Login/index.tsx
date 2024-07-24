@@ -55,10 +55,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 0 auto;
+  margin: 50% auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px #ccc;
-  margin-top: 20px;
+  margin-top: 50%;
 `
