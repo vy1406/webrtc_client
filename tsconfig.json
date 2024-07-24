@@ -13,6 +13,7 @@
       "@components/*": ["components/*"],
       "@context/*": ["context/*"],
       "@interfaces/*": ["interfaces/*"],
+      "@utils/*": ["utils/*"],
     }
   },
   "include": ["src"]

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { USER_ROLES } from '@interfaces/constants';
 import { User } from '@interfaces/user';
+import { USER_ROLES } from '@utils/constants';
 
 export const users: User[] = [
     { id: uuidv4(), fullName: 'Doctor1', role: USER_ROLES.PRO },
