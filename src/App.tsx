@@ -5,6 +5,7 @@ import JoinVideo from './pages/JoinVideo';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import JoinVideoPro from './pages/JoinVideoPro';
+import SnackBar from '@components/snackbar';
 
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/join-video-pro" element={<JoinVideoPro />} />
       </Routes>
+      <SnackBar />
     </div>
   );
 };
