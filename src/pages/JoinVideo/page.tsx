@@ -3,7 +3,9 @@ import ActionButtons from '@components/call/actionButtons';
 import Separator from '@components/shared/separator';
 import styled from '@emotion/styled';
 import { fetchMedia } from '@services/deviceService';
-import { SNACKBAR_TYPES, useSnackBarContext } from '@context/snackbarContext';
+import { useSnackBarContext } from '@context/snackbarContext';
+import { SnackbarData } from '@interfaces/snackbar';
+
 
 const JoinVideoPage = () => {
     const smallFeedEl = useRef(null);
@@ -16,15 +18,7 @@ const JoinVideoPage = () => {
                 (smallFeedEl.current as HTMLVideoElement).srcObject = stream;
             }
         }
-
-        const onMediaError = (error: string) => {
-            setSnackbarData({
-              isOpen: true,
-              body: error,
-              type: SNACKBAR_TYPES.WARNING
-            });
-          };
-    
+        const onMediaError = (sbData: SnackbarData) => setSnackbarData(sbData);
         fetchMedia(onMediaSuccess, onMediaError)
     }, [])
 

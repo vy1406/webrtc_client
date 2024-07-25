@@ -1,13 +1,5 @@
+import { SnackbarData, SnackbarType } from "@interfaces/snackbar";
 import React, { createContext, useContext, useState, ReactNode } from "react";
-
-type SnackbarType = "success" | "error" | "info" | "warning";
-
-interface SnackbarData {
-  isOpen: boolean;
-  body: string;
-  type: SnackbarType;
-  onClose?: () => void;
-}
 
 interface SnackBarContextProps {
   snackbarData: SnackbarData;
