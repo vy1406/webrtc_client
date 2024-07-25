@@ -23,7 +23,6 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({ openCloseChat, smallFeedE
                 <AudioButton smallFeedEl={smallFeedEl} />
                 <VideoButton smallFeedEl={smallFeedEl} />
             </LeftContainer>
-
             <CenterContainer>
                 <ButtonWrapper>
                     <ParticipantButton>
@@ -40,7 +39,6 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({ openCloseChat, smallFeedE
                     <ButtonText>Share Screen</ButtonText>
                 </ButtonNoCaret>
             </CenterContainer>
-
             <RightContainer>
                 <HangupButton smallFeedEl={smallFeedEl} largeFeedEl={largeFeedEl} />
             </RightContainer>

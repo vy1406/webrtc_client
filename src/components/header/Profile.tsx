@@ -7,7 +7,7 @@ const UserProfile: React.FC = () => {
   const { user } = useUserContext();
 
   if (!user) {
-    return null;
+    return <EmptyContainer />;
   }
 
   return (
@@ -26,3 +26,5 @@ const ProfileContainer = styled.div`
   align-items: center;
   margin-right: auto;
 `;
+
+const EmptyContainer = styled(ProfileContainer)``

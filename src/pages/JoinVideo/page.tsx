@@ -17,11 +17,9 @@ const JoinVideoPage = () => {
             <ActionButtons largeFeedEl={largeFeedEl} smallFeedEl={smallFeedEl} />
         </Container>
     )
-
 };
 
 export default JoinVideoPage;
-
 
 const Container = styled.div`
 `
