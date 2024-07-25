@@ -26,18 +26,17 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({ openCloseChat, smallFeedE
 
             <CenterContainer>
                 <ButtonWrapper>
-                    <ArrowDropUpIcon className="choose-video" />
                     <ParticipantButton>
-                        <PeopleIcon />
+                        <PeopleIcon color="primary"/>
                         <ButtonText>Participants</ButtonText>
                     </ParticipantButton>
                 </ButtonWrapper>
                 <ButtonNoCaret onClick={() => console.log('Chat clicked')}>
-                    <ChatIcon />
+                    <ChatIcon color="primary"/>
                     <ButtonText>Chat</ButtonText>
                 </ButtonNoCaret>
                 <ButtonNoCaret>
-                    <DesktopWindowsIcon />
+                    <DesktopWindowsIcon color="primary"/>
                     <ButtonText>Share Screen</ButtonText>
                 </ButtonNoCaret>
             </CenterContainer>

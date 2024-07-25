@@ -3,7 +3,6 @@ import Separator from '@components/shared/separator';
 import styled from '@emotion/styled';
 import React, { useRef } from 'react';
 
-
 const JoinVideoPage = () => {
     const smallFeedEl = useRef(null);
     const largeFeedEl = useRef(null);
@@ -15,7 +14,7 @@ const JoinVideoPage = () => {
                 <OwnFeed id="own-feed" ref={smallFeedEl} autoPlay controls playsInline></OwnFeed>
             </VideoChatWrap>
             <Separator />
-            <ActionButtons largeFeedEl={largeFeedEl} smallFeedEl={smallFeedEl}/>
+            <ActionButtons largeFeedEl={largeFeedEl} smallFeedEl={smallFeedEl} />
         </Container>
     )
 
@@ -34,7 +33,7 @@ const VideoChatWrap = styled.div`
 
 const MainFeed = styled.video`
   background-color: black;
-  height: calc(100vh - 64px - 100px - 6px);
+  height: calc(100vh - 62px - 100px);
   width: 100vw;
 `
 
