@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import JoinVideo from './pages/JoinVideo';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import JoinVideoPro from './pages/JoinVideoPro';
 import SnackBar from '@components/snackbar';
 import { ROUTES } from '@utils/constants';
 import MainLayout from '@components/layout/MainLayout';
 import AuthLayout from '@components/layout/AuthLayout';
-import Playground from 'pages/Playground';
+import Playground from '@pages/playground';
+import JoinVideoPro from '@pages/joinVideoPro';
+import Dashboard from '@pages/dashboard';
+import JoinVideo from '@pages/joinVideo';
+import Home from '@pages/home';
+import Login from '@pages/login';
 
 const AppRoutes: React.FC = () => {
   return (

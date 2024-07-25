@@ -1,7 +1,13 @@
 import React from 'react';
+import { CallContextProvider } from '@context/callContext';
+import JoinVideoPage from './page';
 
 const JoinVideo = () => {
-  return <h2>JoinVideo Page</h2>;
+  return (
+    <CallContextProvider>
+      <JoinVideoPage />
+    </CallContextProvider>
+  )
 };
 
 export default JoinVideo;

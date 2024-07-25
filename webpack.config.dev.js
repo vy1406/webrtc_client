@@ -10,9 +10,9 @@ const envConfig = {
     entry: './src/index.tsx',
     devServer: {
         historyApiFallback: true,
-        static: {
-            directory: path.resolve(__dirname, 'dist'),
-        },
+        // static: {
+        //     directory: path.resolve(__dirname, 'dist'),
+        // },
         port: 3000,
         hot: true,
         compress: true,
