@@ -1,11 +1,32 @@
+import React, { useEffect, useRef } from 'react';
 import ActionButtons from '@components/call/actionButtons';
 import Separator from '@components/shared/separator';
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
+import { fetchMedia } from '@services/deviceService';
+import { SNACKBAR_TYPES, useSnackBarContext } from '@context/snackbarContext';
 
 const JoinVideoPage = () => {
     const smallFeedEl = useRef(null);
     const largeFeedEl = useRef(null);
+    const { setSnackbarData } = useSnackBarContext();
+
+    useEffect(() => {
+        const onMediaSuccess = (stream: MediaStream) => {
+            if (smallFeedEl.current) {
+                (smallFeedEl.current as HTMLVideoElement).srcObject = stream;
+            }
+        }
+
+        const onMediaError = (error: string) => {
+            setSnackbarData({
+              isOpen: true,
+              body: error,
+              type: SNACKBAR_TYPES.WARNING
+            });
+          };
+    
+        fetchMedia(onMediaSuccess, onMediaError)
+    }, [])
 
     return (
         <Container>

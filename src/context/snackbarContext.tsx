@@ -6,7 +6,7 @@ interface SnackbarData {
   isOpen: boolean;
   body: string;
   type: SnackbarType;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 interface SnackBarContextProps {

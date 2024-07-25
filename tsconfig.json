@@ -15,6 +15,7 @@
       "@interfaces/*": ["interfaces/*"],
       "@utils/*": ["utils/*"],
       "@pages/*": ["pages/*"],
+      "@services/*": ["services/*"],
     }
   },
   "include": ["src"]

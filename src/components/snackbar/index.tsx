@@ -9,7 +9,9 @@ export default function SnackBar() {
     if (reason === "clickaway") {
       return;
     }
-    snackbarData.onClose();
+    if (snackbarData?.onClose) {
+      snackbarData?.onClose();
+    }
     setSnackbarData(INIT_SNACKBAR);
   };
 
@@ -18,21 +20,19 @@ export default function SnackBar() {
   }
 
   return (
-    <div>
-      <MuiSnackBar
-        open={snackbarData.isOpen}
-        autoHideDuration={3000}
+    <MuiSnackBar
+      open={snackbarData.isOpen}
+      autoHideDuration={5000}
+      onClose={handleClose}
+    >
+      <Alert
         onClose={handleClose}
+        severity={snackbarData.type}
+        variant="filled"
+        sx={{ width: "100%" }}
       >
-        <Alert
-          onClose={handleClose}
-          severity={snackbarData.type}
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
-          {snackbarData.body}
-        </Alert>
-      </MuiSnackBar>
-    </div>
+        {snackbarData.body}
+      </Alert>
+    </MuiSnackBar>
   );
 }
