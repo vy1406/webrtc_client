@@ -10,9 +10,7 @@ import { useCallContext } from "@context/callContext";
 
 
 const AudioButton = ({ smallFeedEl }: any) => {
-
     const [isOpen, setIsOpen] = useState(false);
-    
     const { callData, updateCall } = useCallContext();
 
     const micStatus = "off"; // Replace with "enabled" or "disabled" for different states
@@ -40,14 +38,16 @@ const AudioButton = ({ smallFeedEl }: any) => {
                 <IconButton color="primary" size="small" onClick={() => setIsOpen(true)}>
                     <ExpandLessIcon />
                 </IconButton>
-                <DeviceDialogSelect
-                    isOpen={isOpen}
-                    selected={callData?.selectedAudioInputDeviceId || ""}
-                    label="Audio"
-                    list={callData?.audioInputDevices || []}
-                    onSelect={handleOnSelect}
-                    onClose={() => setIsOpen(false)}
-                />
+                {isOpen &&
+                    <DeviceDialogSelect
+                        isOpen={isOpen}
+                        selected={callData?.selectedAudioInputDeviceId || ""}
+                        label="Audio"
+                        list={callData?.audioInputDevices || []}
+                        onSelect={handleOnSelect}
+                        onClose={() => setIsOpen(false)}
+                    />
+                }
             </IconWrap>
             <IconButton color="primary">
                 <MicIconComponent />

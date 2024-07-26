@@ -56,5 +56,5 @@ export const findDefaultDeviceId = (devices: MediaDeviceInfo[]): string => {
       return device.deviceId;
     }
   }
-  return "-1";
+  return devices.length > 0 ? devices[0].deviceId : '-1';
 };

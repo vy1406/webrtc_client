@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { IconButton, Typography, Box } from '@mui/material';
-import { styled } from '@mui/system';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import VideocamOffIcon from '@mui/icons-material/VideocamOff';
+import { useCallContext } from "@context/callContext";
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import styled from "@emotion/styled";
+import DeviceDialogSelect from "./deviceDialogSelect";
 
 const VideoButton = ({ smallFeedEl }: any) => {
-    // Dummy video status for UI demonstration
+    const [isOpen, setIsOpen] = useState(false);
+    const { callData, updateCall } = useCallContext();
+
     const videoStatus = "off"; // Replace with "enabled" or "disabled" for different states
 
     let videoText;
@@ -21,8 +26,27 @@ const VideoButton = ({ smallFeedEl }: any) => {
         VideoIconComponent = VideocamOffIcon;
     }
 
+
+    const handleOnSelect = (value: string) => {
+        updateCall({ selectedVideoDeviceId: value });
+    }
     return (
         <ButtonWrapper>
+            <IconWrap>
+                <IconButton color="primary" size="small" onClick={() => setIsOpen(true)}>
+                    <ExpandLessIcon />
+                </IconButton>
+                {isOpen &&
+                    <DeviceDialogSelect
+                        isOpen={isOpen}
+                        selected={callData?.selectedVideoDeviceId || ""}
+                        label="Video"
+                        list={callData?.videoDevices || []}
+                        onSelect={handleOnSelect}
+                        onClose={() => setIsOpen(false)}
+                    />
+                }
+            </IconWrap>
             <IconButton color="primary">
                 <VideoIconComponent />
             </IconButton>
@@ -37,6 +61,7 @@ const ButtonWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 `;
 
 const ButtonText = styled(Typography)`
@@ -44,3 +69,9 @@ const ButtonText = styled(Typography)`
   color: white;
   margin-top: 4px;
 `;
+
+const IconWrap = styled.div`
+    position: absolute;
+    top: -15px;
+    right: -12px;
+`

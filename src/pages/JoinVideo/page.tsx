@@ -41,7 +41,9 @@ const JoinVideoPage = () => {
         const onDevicesError = () => {};
         fetchDevices(onDevicesSuccess, onDevicesError)
     }, [])
+
     console.log(callData)
+    
     return (
         <Container>
            

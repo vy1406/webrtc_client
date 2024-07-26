@@ -28,6 +28,8 @@ export default function DeviceDialogSelect({
     onClose,
     onSelect,
 }: DeviceDialogSelectProps) {
+
+    
     const [open, setOpen] = useState(isOpen);
     const [value, setValue] = useState<string>(selected);
 
@@ -38,7 +40,6 @@ export default function DeviceDialogSelect({
     const handleChange = (event: SelectChangeEvent<typeof value>) => {
         setValue(event.target.value);
         onSelect(event.target.value);
-        onClose()
     };
 
     const handleClose = (event: React.SyntheticEvent<unknown>, reason?: string) => {
