@@ -3,7 +3,7 @@ import { SNACKBAR_TYPES } from "@context/snackbarContext";
 type SuccessMediaCallback = (stream: MediaStream) => void;
 type ErrorMediaCallback = (errorMessage: any) => void;
 
-type DeviceInfo = {
+export type DeviceInfo = {
   videoDevices: MediaDeviceInfo[];
   audioOutputDevices: MediaDeviceInfo[];
   audioInputDevices: MediaDeviceInfo[];
@@ -19,7 +19,7 @@ const constraints = {
 
 const SNACKBAR_ERROR_TYPE = {
   isOpen: true,
-  body: "No permission given to access camera and microphone",
+  body: "No permission given to access camera and / or microphone",
   type: SNACKBAR_TYPES.WARNING
 }
 

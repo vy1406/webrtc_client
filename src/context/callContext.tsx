@@ -10,11 +10,15 @@ const INIT_STATE: Call = {
     shareScreen: false,
     haveMedia: false,
     haveCreatedOffer: false,
+    audioInputDevices: [],
+    audioOutputDevices: [],
+    videoDevices: [],
   };
 
 interface CallContextProps {
-  call: Call | null;
+  callData: Call | null;
   setCall: React.Dispatch<React.SetStateAction<Call | null>>;
+  updateCall: (partialCall: Partial<Call>) => void;
 }
 
 const CallContext = createContext<CallContextProps | undefined>(undefined);
@@ -24,10 +28,17 @@ interface CallContextProviderProps {
 }
 
 const CallContextProvider: React.FC<CallContextProviderProps> = ({ children }) => {
-  const [call, setCall] = useState<Call | null>(INIT_STATE);
+  const [callData, setCall] = useState<Call | null>(INIT_STATE);
+
+  const updateCall = (partialCall: Partial<Call>) => {
+    setCall(prevCallData => ({
+      ...prevCallData,
+      ...partialCall,
+    } as Call));
+  };
 
   return (
-    <CallContext.Provider value={{ call, setCall }}>
+    <CallContext.Provider value={{ callData, setCall, updateCall }}>
       {children}
     </CallContext.Provider>
   );

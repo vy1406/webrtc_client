@@ -2,15 +2,17 @@ import React, { useEffect, useRef } from 'react';
 import ActionButtons from '@components/call/actionButtons';
 import Separator from '@components/shared/separator';
 import styled from '@emotion/styled';
-import { fetchMedia } from '@services/deviceService';
+import { DeviceInfo, fetchDevices, fetchMedia } from '@services/deviceService';
 import { useSnackBarContext } from '@context/snackbarContext';
 import { SnackbarData } from '@interfaces/snackbar';
+import { useCallContext } from '@context/callContext';
 
 
 const JoinVideoPage = () => {
     const smallFeedEl = useRef(null);
     const largeFeedEl = useRef(null);
     const { setSnackbarData } = useSnackBarContext();
+    const { callData, updateCall } = useCallContext();
 
     useEffect(() => {
         const onMediaSuccess = (stream: MediaStream) => {
@@ -22,8 +24,21 @@ const JoinVideoPage = () => {
         fetchMedia(onMediaSuccess, onMediaError)
     }, [])
 
+    useEffect(() => {
+        const onDevicesSuccess = (devices: DeviceInfo) => {
+            updateCall({
+                audioInputDevices: devices.audioInputDevices,
+                audioOutputDevices: devices.audioOutputDevices,
+                videoDevices: devices.videoDevices
+            });
+        }
+        const onDevicesError = () => {};
+        fetchDevices(onDevicesSuccess, onDevicesError)
+    }, [])
+    console.log(callData)
     return (
         <Container>
+           
             <VideoChatWrap >
                 <MainFeed id="large-feed" ref={largeFeedEl} autoPlay controls playsInline></MainFeed>
                 <OwnFeed id="own-feed" ref={smallFeedEl} autoPlay controls playsInline></OwnFeed>
