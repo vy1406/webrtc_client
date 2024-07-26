@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import ActionButtons from '@components/call/actionButtons';
 import Separator from '@components/shared/separator';
 import styled from '@emotion/styled';
-import { DeviceInfo, fetchDevices, fetchMedia } from '@services/deviceService';
+import { DeviceInfo, fetchDevices, fetchMedia, findDefaultDeviceId } from '@services/deviceService';
 import { useSnackBarContext } from '@context/snackbarContext';
 import { SnackbarData } from '@interfaces/snackbar';
 import { useCallContext } from '@context/callContext';
@@ -26,10 +26,16 @@ const JoinVideoPage = () => {
 
     useEffect(() => {
         const onDevicesSuccess = (devices: DeviceInfo) => {
+            const defaultAudioInputDeviceId = findDefaultDeviceId(devices.audioInputDevices);
+            const defaultAudioOutputDeviceId = findDefaultDeviceId(devices.audioOutputDevices);
+            const defaultVideoDeviceId = findDefaultDeviceId(devices.videoDevices);           
             updateCall({
                 audioInputDevices: devices.audioInputDevices,
                 audioOutputDevices: devices.audioOutputDevices,
-                videoDevices: devices.videoDevices
+                videoDevices: devices.videoDevices,
+                selectedAudioInputDeviceId: defaultAudioInputDeviceId,
+                selectedAudioOutputDeviceId: defaultAudioOutputDeviceId,
+                selectedVideoDeviceId: defaultVideoDeviceId,
             });
         }
         const onDevicesError = () => {};

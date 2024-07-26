@@ -13,6 +13,9 @@ const INIT_STATE: Call = {
     audioInputDevices: [],
     audioOutputDevices: [],
     videoDevices: [],
+    selectedAudioInputDeviceId: 'default',
+    selectedAudioOutputDeviceId: 'default',
+    selectedVideoDeviceId: 'default',
   };
 
 interface CallContextProps {

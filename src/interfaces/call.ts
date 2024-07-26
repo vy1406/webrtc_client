@@ -7,6 +7,9 @@ export interface Call {
     shareScreen: boolean;
     haveMedia: boolean;
     haveCreatedOffer: boolean;
+    selectedAudioInputDeviceId: string;
+    selectedAudioOutputDeviceId: string;
+    selectedVideoDeviceId: string;
     audioInputDevices: MediaDeviceInfo[];
     audioOutputDevices: MediaDeviceInfo[];
     videoDevices: MediaDeviceInfo[];

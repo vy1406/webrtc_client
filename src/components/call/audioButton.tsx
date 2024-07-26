@@ -6,12 +6,15 @@ import MicOffIcon from '@mui/icons-material/MicOff';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import styled from "@emotion/styled";
 import DeviceDialogSelect from "./deviceDialogSelect";
+import { useCallContext } from "@context/callContext";
 
 
 const AudioButton = ({ smallFeedEl }: any) => {
 
     const [isOpen, setIsOpen] = useState(false);
-    // Dummy mic status for UI demonstration
+    
+    const { callData, updateCall } = useCallContext();
+
     const micStatus = "off"; // Replace with "enabled" or "disabled" for different states
 
     let micText;
@@ -28,7 +31,7 @@ const AudioButton = ({ smallFeedEl }: any) => {
     }
 
     const handleOnSelect = (value: string) => {
-        console.log(value);
+        updateCall({ selectedAudioInputDeviceId: value });
     }
 
     return (
@@ -39,8 +42,9 @@ const AudioButton = ({ smallFeedEl }: any) => {
                 </IconButton>
                 <DeviceDialogSelect
                     isOpen={isOpen}
+                    selected={callData?.selectedAudioInputDeviceId || ""}
                     label="Audio"
-                    list={[]}
+                    list={callData?.audioInputDevices || []}
                     onSelect={handleOnSelect}
                     onClose={() => setIsOpen(false)}
                 />

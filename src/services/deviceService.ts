@@ -48,3 +48,13 @@ export const fetchDevices = async (onSuccess: SuccessDevicesCallback, onError: E
     onError((error as Error).message);
   }
 };
+
+
+export const findDefaultDeviceId = (devices: MediaDeviceInfo[]): string => {
+  for (const device of devices) {
+    if (device.label.toLowerCase().includes('default')) {
+      return device.deviceId;
+    }
+  }
+  return "-1";
+};

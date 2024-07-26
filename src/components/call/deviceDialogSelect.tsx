@@ -9,18 +9,27 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import styled from '@emotion/styled';
 
 interface DeviceDialogSelectProps {
     isOpen: boolean;
     label: string;
-    list: { value: string; label: string }[];
-    onSelect: (value: string) => void;
+    selected: string;
+    list: MediaDeviceInfo[];
+    onSelect: (deviceId: string) => void;
     onClose: () => void;
 }
 
-export default function DeviceDialogSelect({ isOpen, label, list, onSelect, onClose }: DeviceDialogSelectProps) {
+export default function DeviceDialogSelect({
+    list,
+    label,
+    isOpen,
+    selected = "",
+    onClose,
+    onSelect,
+}: DeviceDialogSelectProps) {
     const [open, setOpen] = useState(isOpen);
-    const [value, setValue] = useState<string>('');
+    const [value, setValue] = useState<string>(selected);
 
     useEffect(() => {
         setOpen(isOpen)
@@ -44,7 +53,7 @@ export default function DeviceDialogSelect({ isOpen, label, list, onSelect, onCl
             <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
                 <DialogContent>
                     <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
-                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                        <FormControl sx={{ m: 1, minWidth: 120, maxWidth: 250 }}>
                             <InputLabel id={`${label}-select-label`}>{label}</InputLabel>
                             <Select
                                 labelId={`${label}-select-label`}
@@ -53,10 +62,10 @@ export default function DeviceDialogSelect({ isOpen, label, list, onSelect, onCl
                                 onChange={handleChange}
                                 input={<OutlinedInput label={label} />}
                             >
-                                {list.map((item: any) => (
-                                    <MenuItem key={item.value} value={item.value}>
+                                 {list.map((item: MediaDeviceInfo) => (
+                                    <StyledMenuItem key={item.deviceId} value={item.deviceId}>
                                         {item.label}
-                                    </MenuItem>
+                                    </StyledMenuItem>
                                 ))}
                             </Select>
                         </FormControl>
@@ -69,3 +78,10 @@ export default function DeviceDialogSelect({ isOpen, label, list, onSelect, onCl
         </div>
     );
 }
+
+const StyledMenuItem = styled(MenuItem)`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 
+`;
