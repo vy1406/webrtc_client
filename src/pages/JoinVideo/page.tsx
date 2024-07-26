@@ -18,10 +18,14 @@ const JoinVideoPage = () => {
         const onMediaSuccess = (stream: MediaStream) => {
             if (smallFeedEl.current) {
                 (smallFeedEl.current as HTMLVideoElement).srcObject = stream;
+                updateCall({
+                    haveMedia: true
+                })
             }
         }
         const onMediaError = (sbData: SnackbarData) => setSnackbarData(sbData);
         fetchMedia(onMediaSuccess, onMediaError)
+       
     }, [])
 
     useEffect(() => {
@@ -43,7 +47,7 @@ const JoinVideoPage = () => {
     }, [])
 
     console.log(callData)
-    
+
     return (
         <Container>
            

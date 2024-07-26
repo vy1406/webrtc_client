@@ -32,6 +32,15 @@ const AudioButton = ({ smallFeedEl }: any) => {
         updateCall({ selectedAudioInputDeviceId: value });
     }
 
+    const handleToggleMic = () => {
+        if ( callData === null ) return;
+
+        if (callData.audio === 'off') {
+            updateCall({ audio: 'enabled' });
+        } else {
+            updateCall({ audio: 'off' });
+        }
+    }
     return (
         <ButtonWrapper>
             <IconWrap>
@@ -49,7 +58,7 @@ const AudioButton = ({ smallFeedEl }: any) => {
                     />
                 }
             </IconWrap>
-            <IconButton color="primary">
+            <IconButton color="primary" onClick={handleToggleMic}>
                 <MicIconComponent />
             </IconButton>
             <ButtonText>{micText}</ButtonText>
