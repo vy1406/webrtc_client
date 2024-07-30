@@ -10,6 +10,7 @@ import Dashboard from '@pages/dashboard';
 import JoinVideo from '@pages/joinVideo';
 import Home from '@pages/home';
 import Login from '@pages/login';
+import JoinVideoMediaSoup from '@pages/joinVideoMediaSoup';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes: React.FC = () => {
         <Route path={ROUTES.HOME} element={<Home />} />
         <Route path={ROUTES.JOIN_VIDEO} element={<JoinVideo />} />
         <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+        <Route path={ROUTES.JOIN_VIDEO_MEDIASOUP} element={<JoinVideoMediaSoup />} />
         <Route path={ROUTES.JOIN_VIDEO_PRO} element={<JoinVideoPro />} />
         <Route path={ROUTES.PLAYGROUND} element={<Playground />} />
       </Route>

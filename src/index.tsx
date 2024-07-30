@@ -5,19 +5,24 @@ import App from './App';
 import { createRoot } from 'react-dom/client';
 import { SnackBarContextProvider } from '@context/snackbarContext';
 import { UserContextProvider } from '@context/userContext';
+import { Provider } from 'react-redux';
+import store from 'store/store';
 
 const container = document.getElementById('root');
 
 const root = createRoot(container!);
+
 root.render(
   <React.StrictMode>
-    <UserContextProvider>
-      <SnackBarContextProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </SnackBarContextProvider>
-    </UserContextProvider>
+    <Provider store={store}>
+      <UserContextProvider>
+        <SnackBarContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </SnackBarContextProvider>
+      </UserContextProvider>
+    </Provider>
   </React.StrictMode>
 )
 
